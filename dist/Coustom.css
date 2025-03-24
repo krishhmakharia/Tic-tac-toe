@@ -1,0 +1,4 @@
+.box.disabled {
+    pointer-events: none; /* Prevent further clicks */
+    opacity: 0.6; /* Optional: Make it look disabled */
+}
