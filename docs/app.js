@@ -22,7 +22,7 @@ boxes.forEach((box)=>{//1
         
         box.classList.add("disabled");
         checkWinner();
-        if(count===9){
+        if(count==9){
             msg.innerText="It's a tie";
             msg_box.classList.remove("hidden");
         }
