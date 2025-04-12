@@ -6,7 +6,7 @@ let new_game=document.querySelector("#new-btn");
 let turnO=false;
 let count=0;
 const winning_conditions=[[0,3,6],[1,4,7],[2,5,8],[0,1,2],[3,4,5],[6,7,8],[0,4,8],[2,4,6]];
-boxes.forEach((box)=>{
+boxes.forEach((box)=>{//1
     box.addEventListener("click",()=>{
         // console.log("box clicked");
         // box.style.backgroundColor="Black";
@@ -28,30 +28,31 @@ boxes.forEach((box)=>{
         }
     });
 });
-const disableBoxes=()=>{
+const disableBoxes=()=>{//4
     for(let box of boxes){
         box.classList.add("disabled");
     }
 }
-const enableBoxes=()=>{
+const enableBoxes=()=>{//6
     for(let box of boxes){
         box.classList.remove("disabled");
     }
 }
-const newGame=()=>{
+const newGame=()=>{//5
     turnO=false;
+    count=0;
     enableBoxes();
     for(let box of boxes){
         box.innerText="";
     }
     msg_box.classList.add("hidden");
 }
-const showWinner=(winner)=>{
+const showWinner=(winner)=>{//3
     msg.innerText=`🎊 Congratulations, ${winner} won the game 🎊`;
     msg_box.classList.remove("hidden");
 }
 
-let checkWinner =() =>{
+let checkWinner =() =>{//2
     let pos_1_value;
     let pos_2_value;
     let pos_3_value;
@@ -62,6 +63,9 @@ let checkWinner =() =>{
 
         if(pos_1_value!="" && pos_2_value!="" && pos_3_value!=""){
             if(pos_1_value===pos_2_value && pos_2_value===pos_3_value){
+                boxes[pos[0]].classList.add("winner");
+                boxes[pos[1]].classList.add("winner");
+                boxes[pos[2]].classList.add("winner");
                 showWinner(pos_1_value);
                 disableBoxes();
             }
